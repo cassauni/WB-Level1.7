@@ -16,11 +16,11 @@ func NewCache(capacity int) *Cache {
 }
 
 func (c *Cache) Get(key int) int {
-	c.mu.RLock()         // Блокируем на чтение
-	defer c.mu.RUnlock() // Освобождаем после чтения
+	c.mu.RLock()
+	defer c.mu.RUnlock()
 	value, ok := c.data[key]
 	if !ok {
-		fmt.Println("Cache miss") // Ключ не найден
+		fmt.Println("Cache miss")
 		return 0
 	}
 	return value
